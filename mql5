@@ -1,0 +1,81 @@
+
+//+------------------------------------------------------------------+
+//|                                           AW Candle Time MT5.mq5 |
+//|                        Copyright 2021, Forex Robot Easy Team       |
+//|                                             forexroboteasy.com    |
+//+------------------------------------------------------------------+
+
+//+------------------------------------------------------------------+
+//|                      Initialize global variables                  |
+//+------------------------------------------------------------------+
+datetime nextCandleTime;
+int trendDirection;
+bool enableOtherTimeframes = true;
+color trendColor = clrRed;
+
+//+------------------------------------------------------------------+
+//|                     Expert initialization function                |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Set up the next candle time
+    nextCandleTime = TimeCurrent() + PeriodSeconds(Period()) - TimeCurrent() % PeriodSeconds(Period());
+
+    // Set up the Super Trend indicator
+    int indicatorHandle = iCustom(NULL, 0, 'AW_Super_Trend', 0, 0);
+    trendDirection = iCustom(NULL, 0, 'AW_Super_Trend', MODE_MAIN, 0);
+
+    // Enable or disable other timeframes
+    if (enableOtherTimeframes)
+    {
+        // Perform necessary actions
+    }
+    else
+    {
+        // Perform necessary actions
+    }
+
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//|                Expert tick function                               |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Check if the current candle has ended
+    if (TimeCurrent() >= nextCandleTime)
+    {
+        // Perform necessary actions
+
+        // Update the next candle time
+        nextCandleTime = TimeCurrent() + PeriodSeconds(Period()) - TimeCurrent() % PeriodSeconds(Period());
+    }
+
+    // Check the Super Trend indicator for the current trend direction
+    int newTrendDirection = iCustom(NULL, 0, 'AW_Super_Trend', MODE_MAIN, 0);
+    if (newTrendDirection != trendDirection)
+    {
+        // Perform necessary actions
+        trendDirection = newTrendDirection;
+    }
+
+    // Perform necessary actions to highlight the trend strategy
+    // in the selected color
+
+    // Perform necessary actions to provide sound notifications
+
+    // Perform necessary actions to add additional coloring
+    // of the time before changing the candle
+
+    // Perform necessary actions to enhance forex trading
+    // with the trend strategy
+}
+
+//+------------------------------------------------------------------+
+//|                     Expert deinitialization function              |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Perform necessary actions for deinitialization
+}
